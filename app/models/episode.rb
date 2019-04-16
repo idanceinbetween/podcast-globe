@@ -3,7 +3,7 @@ class Episode < ApplicationRecord
   has_many :keywordisations
   has_many :keywords, through: :keywordisations
   has_many :notes
-  has_many :users, through: :notes
+  has_many :notators, through: :notes
   has_many :favouritisations
-  has_many :favouritees, through: :favouritisations, source: :favouriter
+  has_many :favouriters, through: :favouritisations
 end

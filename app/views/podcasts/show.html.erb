@@ -5,19 +5,18 @@
 
 <h4>Episodes:</h4>
 <p>
-<%@podcast.episodes.each do |e|%>
-  <li><%= link_to e.title.capitalize, e%>:<br>
-    <%= e.description.first(200)%>...<%= link_to "Read more", e%><br>
+<%@episodes.each do |e|%>
+  <li><%= link_to e.title.capitalize, e%>: <%= e.description.first(200)%>...<%= link_to "Read more", e%><br>
    (Keywords: <% e.keywords.each do |k|%> <%= k.word%> <%end%>)</li>
 <%end%>
 </p>
 
-<b>Categories:</b><% @podcast.categories.uniq.each do |c|%> <%= link_to c.name, "/podcasts#{c.name}"%> |
+<b>Categories:</b><% @categories.uniq.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.name}"%> |
 <%end%>
 
 <h4>Subscribed by:</h4>
 <p>
-  <%@podcast.users.each do |u|%>
-  <li><%=link_to u.username, u%></li>
+  <%@subscribers.each do |s|%>
+  <li><%=link_to s.username, s%></li>
   <%end%>
 </p>

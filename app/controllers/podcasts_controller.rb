@@ -11,6 +11,9 @@ class PodcastsController < ApplicationController
 
   def show
     @podcast = Podcast.find(params[:id])
+    @episodes = @podcast.episodes
+    @categories = @podcast.categories
+    @subscribers = @podcast.subscribers
   end
 
 end
