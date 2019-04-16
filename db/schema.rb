@@ -48,15 +48,6 @@ ActiveRecord::Schema.define(version: 2019_04_16_103419) do
     t.index ["user_id"], name: "index_favouritisations_on_user_id"
   end
 
-  create_table "followships", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "followee_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followee_id"], name: "index_followships_on_followee_id"
-    t.index ["user_id"], name: "index_followships_on_user_id"
-  end
-
   create_table "keywordisations", force: :cascade do |t|
     t.integer "keyword_id"
     t.integer "episode_id"
