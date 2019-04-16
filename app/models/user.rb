@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :favourite_episodes, through: :favouritisations
   has_many :subscriptions
   has_many :podcasts, through: :subscriptions
+
+  has_secure_password
   #
   # has_many :followships
   #
