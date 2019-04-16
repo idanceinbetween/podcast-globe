@@ -1,2 +1,23 @@
-<h1>Episodes#show</h1>
-<p>Find me in app/views/episodes/show.html.erb</p>
+<h1><%= @episode.title%></h1>
+<p>An episode from: <%= link_to @podcast.name, @podcast%></p>
+<h4>Description:</h4>
+<p><%= @episode.description%></p>
+
+<%if @episode.favouritees.count != 0%>
+  <h4>Favourited by:</h4>
+  <% @episode.favouritees.each do |f|%> <li><%=link_to f.username, f%></li><%end%>
+<%end%>
+
+<h4>Notes by our community:</h4>
+  <%if @episode.notes.count == 0%>
+    No notes available for this episode
+  <%else%>
+    <% @episode.notes.each do |n|%> <li><%=n.content%> - <%= n.user.username%></li><%end%>
+  <%end%>
+
+<h4>Episode Keywords:</h4>
+  <% @episode.keywords.each do |k|%> <li><%=k.word%></li><%end%>
+
+<h4>Other episodes in this series: </h4>
+<% @siblings.each do |s|%>
+<li><%= link_to s.title, s%></li><%end%>

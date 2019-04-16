@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   has_many :notes
-  has_many :favouritisations
-  has_many :faves, through: :favouritisations
   has_many :annotated_episodes, through: :notes
+  has_many :favouritisations
+  has_many :favourite_episodes, through: :favouritisations
   #
   # has_many :followships
   #
