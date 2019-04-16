@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PodcastGlobe</title>
+    <title>Cast Away</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <h4><i>Cast Away: Lose yourself in the greatness of podcasts</i></h4>
   </head>
 
   <body>
+  <h5><%=link_to "All Podcasts", podcasts_path%></h5>
     <%= yield %>
   </body>
 </html>

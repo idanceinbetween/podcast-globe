@@ -1,0 +1,15 @@
+<h1>All Podcasts</h1>
+
+<p>Filter by category:
+
+<% @categories.each do |c|%>
+  <%= link_to c.name, "/podcasts?category=#{c.name}"%> (<%=c.podcasts.count%>) |
+<%end%>
+
+  </p>
+
+<p>
+<% @podcasts.each do |p|%>
+  <li><%= link_to p.name, p%></li>
+<%end%>
+</p>
