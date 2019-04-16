@@ -152,9 +152,9 @@ end
 
 #160 keywordisation for 60 episodes and 60 keywords
 160.times do
-  Keywordisation.create(episode_id: rand(1..60), keyword_id: (1..60))
+  Keywordisation.create(keyword_id: rand(1..60), episode_id: rand(1..60))
 end
 
 50.times do
-  Categorisation.create(podcast_id: rand(1..30), category_id: (1..16))
+  Categorisation.create(podcast_id: rand(1..30), category_id: rand(1..16))
 end
