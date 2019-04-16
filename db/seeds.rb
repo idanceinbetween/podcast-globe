@@ -2,9 +2,12 @@ require 'faker'
 
 #20 users
 20.times do |n|
-  name = Faker::Artist.unique.name
+  n=0
+  username = Faker::Artist.unique.name
   email = "user#{n+1}@castaway.com"
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.unique.email, password: BCrypt::Password.new("password1"))
+  password = BCrypt::Password.new("password#{n+1}")
+  User.create(username: username, email: email, password: password)
+  n+=1
 end
 
 #30 podcasts
@@ -137,7 +140,7 @@ end
 
 #160 keywordisation for 60 episodes and 60 keywords
 160.times do
-  Categorisation.create(episode_id: rand(1..60), keyword_id: (1..60))
+  Keywordisation.create(episode_id: rand(1..60), keyword_id: (1..60))
 end
 
 50.times do
