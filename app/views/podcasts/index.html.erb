@@ -3,13 +3,7 @@
 </div>
 
 <%=form_tag podcasts_path, method: :get do%>
-<select name="category" class="custom-select custom-select-lg mb-3">
-  <option selected>filter by category</option>
-  <% @categories.each do |c|%>
-    <option value=<%="#{c.id}" %>><%= "#{c.name} (#{c.podcasts.count})" %></option>
-  <% end %>
-</select>
-<%= submit_tag "filter"%>
+  <%=select_tag "category", options_from_collection_for_select(@categories, :id, :options_display), {class:"custom-select custom-select-lg mb-3", onchange: 'this.form.submit();', include_blank: "-- Filter by Category"}%>
 <%end%>
 
   <ul class="list-group list-group-flush">
