@@ -1,25 +1,95 @@
-<h1><%= @episode.title%></h1>
-<p>An episode from: <%= link_to @podcast.name, @podcast%></p>
-<h4>Description:</h4>
-<p><%= @episode.description%></p>
+<header>
+  <h1 class="text-center display-4"><%= @episode.title%></h1>
 
-<%if @favouriters.count != 0%>
-  <h4>Favourited by:</h4>
-  <% @favouriters.each do |f|%> <li><%=link_to f.username, f%></li><%end%>
-<%end%>
+<p class="text-center">
+  An episode from: <%= link_to @podcast.name, @podcast%>
+</p>
 
-<h4>Annotated by:</h4>
-  <%if @notes.count == 0%>
-    No notes available for this episode
-  <%else%>
-    <% @notes.each do |n|%> <li><%=n.content%> - <%= n.notator.username%></li><%end%>
+  <div class="text-center">
+      <%= (button_to((@user.favourite_episodes.include?(@episode) ? "unfavourite" : "favourite"), favouritisation_path)) if @user %>
+  </div>
+</header>
+
+<section class="w-75 mx-auto">
+
+<p class="lead">
+  <b>Show Notes: </b><%= @episode.description %>
+</p>
+<p class="text-left">
+  Episode Keywords: <% @keywords.each do |k|%><%=k.word%>  <% end %>
+</p>
+<p>&nbsp;</p>
+
+
+<a name="favourite"></a>
+<h4>Favourited by:</h4>
+<%if @favouriters.count == 0%>
+  No one favourited this episode yet!
+<%else%>
+  <%@favouriters.each_slice(3) do |group|%>
+  <div class="row">
+    <% group.each do |f|%>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><%= link_to f.username, f%></p>
+        </div>
+      </div>
+     </div>
+     <%end%>
+  <p>&nbsp;</p>
+  </div>
   <%end%>
-
-<h4>Episode Keywords:</h4>
-  <% @keywords.each do |k|%> <li><%=k.word%></li><%end%>
-
-<%if @siblings%>
-  <h4>Other episodes in this podcast: </h4>
-    <% @siblings.each do |s|%>
-  <li><%= link_to s.title, s%></li><%end%>
 <%end%>
+<p>&nbsp;</p>
+
+<a name="annotations"></a>
+<h4>Annotations:</h4>
+<%if @notes.count == 0%>
+  No notes available for this episode
+<%else%>
+  <%@notes.each_slice(3) do |group|%>
+  <div class="row">
+    <% group.each do |n|%>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><%= n.content%></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Notated by: <%=link_to n.notator.username, n.notator%></small>
+        </div>
+      </div>
+     </div>
+     <%end%>
+  <p>&nbsp;</p>
+  </div>
+  <%end%>
+<%end%>
+
+<p>&nbsp;</p>
+
+<a name="related_episodes"></a>
+<h4>Other episodes from the same podcast:</h4>
+<%if @siblings%>
+  <%@siblings.each_slice(3) do |group|%>
+  <div class="row">
+    <% group.each do |s|%>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body"><%= link_to s.title, s%>
+          <p class="card-text"><%= s.description.first(100)%></p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted"> </small>
+        </div>
+      </div>
+     </div>
+     <%end%>
+  <p>&nbsp;</p>
+  </div>
+  <%end%>
+<%end%>
+
+<p>&nbsp;</p>
+</section>

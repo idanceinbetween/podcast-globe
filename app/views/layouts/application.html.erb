@@ -22,20 +22,17 @@
                   <a class="nav-link disabled" tabindex="-1" aria-disabled="true">Lose yourself in the greatness of podcasts</a>
                 </li>
             </ul>
-            
+
             <span class="navbar-text">
               <% if @current_user %>
                 <%= link_to @current_user.username, profile_path %>
                 <%= image_tag "https://s3.amazonaws.com/uifaces/faces/twitter/guiiipontes/24.jpg" %>
                 <%= button_to "Logout", logout_path, method: "delete", controller: "sessions", class: "btn btn-primary my-2 my-sm-0 btn-sm", form: { style: "display: inline" } %>
-              <% else %>                
+              <% else %>
                 <%= link_to "Login", login_form_path, method: "get", class: "btn btn-primary my-2 my-sm-0" %>
                 <%= link_to "Sign up", new_user_path, method: "get", class: "btn btn-primary my-2 my-sm-0" %>
               <% end %>
             </span>
-              <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button> -->
-            <!-- </form> -->
           </div>
       </nav>
     <%= yield %>

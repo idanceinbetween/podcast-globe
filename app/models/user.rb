@@ -20,4 +20,8 @@ class User < ApplicationRecord
     !self.podcasts.include?(podcast) ? self.podcasts.push(podcast) : self.podcasts.delete(podcast)
   end
 
+  def toggle_favouritisation(episode)
+    !self.favourite_episodes.include?(episode) ? self.favourite_episodes.push(episode) : self.favourite_episodes.delete(episode)
+  end
+
 end

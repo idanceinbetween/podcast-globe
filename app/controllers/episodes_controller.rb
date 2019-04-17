@@ -5,8 +5,17 @@ class EpisodesController < ApplicationController
     @favouriters = @episode.favouriters
     @notes = @episode.notes
     @keywords = @episode.keywords
+    @user = current_user
     if @podcast.episodes.size > 1
       @siblings = @podcast.episodes.select{|e| e != @episode}
     end
   end
+
+  def favouritisation
+    @episode = Episode.find(params[:id])
+    current_user.toggle_favouritisation(@episode)
+    redirect_to @episode
+  end
+
+
 end

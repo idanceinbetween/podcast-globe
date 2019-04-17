@@ -11,8 +11,12 @@ Rails.application.routes.draw do
   resources :podcasts, only: [:show, :index]
   post "/podcasts/:id/subscription", to: "podcasts#subscription", as: "subscription"
 
-  # other
+  #episode routes
   resources :episodes, only: [:show]
+  post "/episodes/:id/favouritisation", to: "episodes#favouritisation", as: "favouritisation"
+
+  # others
   resources :users
+  resources :keywords, only: [:show]
 
 end

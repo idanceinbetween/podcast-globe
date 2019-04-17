@@ -1,3 +1,4 @@
+<section class="w-75 mx-auto">
 <div class="text-center display-4">Welcome back, <%= @user.username%>!
 </div>
 
@@ -22,7 +23,7 @@
         <p class="card-text"><%= (p.description.length>100) ? p.description.first(80) + "..." : p.description%></p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Categories: <% p.categories.each do |c|%><%=c.name%> |<%end%></small>
+        <small class="text-muted">Categories: <% p.categories.each do |c|%><%=link_to c.name, "/podcasts?category=#{c.id}"%> | <%end%></small>
       </div>
     </div>
    </div>
@@ -76,3 +77,4 @@
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+</section>

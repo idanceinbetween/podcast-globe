@@ -1,4 +1,5 @@
-<div class="text-center display-4"><%= @user.username%>'s Page</div>
+<section class="w-75 mx-auto">
+  <div class="text-center display-4"><%= @user.username%>'s Page</div>
 
 <p>&nbsp;</p>
 <!-- <p align="center">Skip to content: <a href="#podcasts">Subscribed Podcasts</a> | <a href="#favourite_episodes">Favourite Episodes</a> | <a href="#annotations">Annotations</a></p> -->
@@ -15,7 +16,7 @@
         <p class="card-text"><%= (p.description.length>100) ? p.description.first(80) + "..." : p.description%></p>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Categories: <% p.categories.each do |c|%><%=c.name%> |<%end%></small>
+        <small class="text-muted">Categories: <% p.categories.each do |c|%><%= link_to c.name, "/podcasts?category=#{c.id}" %> | <%end%></small>
       </div>
     </div>
    </div>
@@ -74,3 +75,4 @@
 
 <h4>Following: (<%=@user.following.count%>)</h4>
 <%@user.following.each do |f|%><li><%= link_to f.username, f%></li><%end%></h4>
+</section>
