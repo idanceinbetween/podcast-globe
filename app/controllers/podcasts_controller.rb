@@ -1,7 +1,7 @@
 class PodcastsController < ApplicationController
   def index
     if params[:category]
-      @podcasts = Category.find_by(name: params[:category]).podcasts.uniq.sort_by { |p| p.subscriptions.size }.reverse
+      @podcasts = Category.find(params[:category]).podcasts.uniq.sort_by { |p| p.subscriptions.size }.reverse
       @categories = Category.order(:name)
     else
       @podcasts = Podcast.all.sort_by { |p| p.subscriptions.size }.reverse
