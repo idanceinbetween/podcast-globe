@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    session[:user_id] ? @me = User.find(session[:user_id]) : @me = nil
     @podcasts = @user.podcasts
     @favourite_episodes = @user.favourite_episodes
     @notes = @user.notes
@@ -14,6 +15,8 @@ class UsersController < ApplicationController
       @user = User.new
     end
   end
+
+  
 
   def create
     @user = User.new(user_params)

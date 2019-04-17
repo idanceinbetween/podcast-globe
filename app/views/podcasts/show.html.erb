@@ -16,18 +16,25 @@
     <%= @podcast.description %>
   </p>
 
+  <form class="button_to" method="post" action="/podcasts/1/subscription">
+    <input type="submit" value="unsubscribe">
+    <input type="hidden" name="authenticity_token" value="SZFpydwRRzI5m0R4PNDw0jZLPPVlHS3ej6ocPQPUw6rApAJbr+Gsf4JT9wqzq0p+wKAAabD3G7DmalgpgkL0hg==">
+  </form>
+
   <div class="card-columns">
     <% @episodes.each do |e| %>
       <div class="card">
-        <% if current_user.favourite_episodes.include?(e) %>
-          <img src="https://image.flaticon.com/icons/png/128/148/148836.png" alt="Card image cap" width="25px" height="25px" style="float: right">
-        <% else %>
-          <img src="https://image.flaticon.com/icons/svg/660/660467.svg" alt="Card image cap" width="25px" height="25px" style="float: right">
-        <% end %>
-        <div class="card-body">
+        <form class="card-body" method="post" action="/episodes/<%= e.id %>/subscription">
+          
+            <% if current_user && current_user.favourite_episodes.include?(e) %>
+              <img src="https://image.flaticon.com/icons/png/128/148/148836.png" alt="red-heart" width="25px" height="25px" style="float: right">
+            <% else %>
+              <img src="https://image.flaticon.com/icons/svg/660/660467.svg" alt="empty-heart" width="25px" height="25px" style="float: right">
+            <% end %>
+          
           <h5 class="card-title"><%= link_to e.title.capitalize, e %></h5>
           <p class="card-text"><%= e.description.first(200) %>...</p>
-        </div>
+        </form>
         <div class="card-footer">
           <small class="text-muted"><% e.keywords.each do |k| %> <%= link_to k.word, k %> <% end %></small>
         </div>
