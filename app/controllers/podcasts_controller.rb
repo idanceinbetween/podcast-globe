@@ -1,10 +1,10 @@
 class PodcastsController < ApplicationController
   def index
     if params[:category]
-      @podcasts = Category.find_by(name: params[:category]).podcasts
+      @podcasts = Category.find_by(name: params[:category]).podcasts.uniq.sort_by { |p| p.subscriptions.size }.reverse
       @categories = Category.order(:name)
     else
-      @podcasts = Podcast.order(:name)
+      @podcasts = Podcast.all.sort_by { |p| p.subscriptions.size }.reverse
       @categories = Category.order(:name)
     end
   end
@@ -14,6 +14,17 @@ class PodcastsController < ApplicationController
     @episodes = @podcast.episodes
     @categories = @podcast.categories
     @subscribers = @podcast.subscribers
+    @user = current_user
   end
 
+  def subscription
+    @podcast = Podcast.find(params[:id])
+    current_user.toggle_subscription(@podcast)
+    redirect_to @podcast
+  end
+
+  private
+  def podcast_params
+    params.require(:category).permit(:category)
+  end
 end
