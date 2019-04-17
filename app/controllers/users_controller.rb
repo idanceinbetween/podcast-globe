@@ -20,6 +20,11 @@ def profile
   if !@current_user
     flash[:notice] = "Please sign in to continue!"
     redirect_to "/login_form"
+  else
+    @user = User.find(session[:user_id])
+    @podcasts = @user.podcasts
+    @favourite_episodes = @user.favourite_episodes
+    @notes = @user.notes
   end
 end
 

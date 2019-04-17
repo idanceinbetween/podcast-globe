@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to user_path(user)
+      @id = user.id
+      redirect_to "/profile"
     else
       flash[:notice] = "Wrong credentials! You dun goofed!"
       redirect_to "/login_form"
