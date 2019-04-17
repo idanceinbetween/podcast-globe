@@ -1,37 +1,63 @@
 class UsersController < ApplicationController
-  def create
-  @user = User.create(user_params)
 
-  redirect_to user_path(@user)
-end
-
-def new
-  @user = User.new
-end
-
-def show
-  @user = User.find(params[:id])
-  @podcasts = @user.podcasts
-  @favourite_episodes = @user.favourite_episodes
-  @notes = @user.notes
-end
-
-def profile
-  if !@current_user
-    flash[:notice] = "Please sign in to continue!"
-    redirect_to "/login_form"
-  else
-    @user = User.find(session[:user_id])
+  def show
+    @user = User.find(params[:id])
     @podcasts = @user.podcasts
     @favourite_episodes = @user.favourite_episodes
     @notes = @user.notes
   end
-end
 
-private
+  def new
+    if current_user
+      redirect_to current_user
+    else
+      @user = User.new
+    end
+  end
 
-def user_params
-  params.require(:user).permit(:username, :password)
-end
+  def create
+    @user = User.new(user_params)
 
+    if @user.save
+      session[:user_id] = @user.id
+      @podcasts = @user.podcasts
+      @favourite_episodes = @user.favourite_episodes
+      @notes = @user.notes
+      redirect_to @user
+    else
+      flash[:notice] = "User creation failed. Please try again"
+      redirect_to new_user_path
+    end
+  end
+
+  def profile
+    if !@current_user
+      flash[:notice] = "Please sign in to continue!"
+      redirect_to login_form_path
+    else
+      @user = User.find(session[:user_id])
+      @podcasts = @user.podcasts
+      @favourite_episodes = @user.favourite_episodes
+      @notes = @user.notes
+    end
+  end
+
+  def edit
+    
+  end
+
+  def update
+  
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    redirect_to podcasts_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password)
+  end
 end
