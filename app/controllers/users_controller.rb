@@ -39,20 +39,23 @@ class UsersController < ApplicationController
       @podcasts = @user.podcasts
       @favourite_episodes = @user.favourite_episodes
       @notes = @user.notes
+      @id = session[:user_id]
     end
   end
 
   def edit
-    
+
   end
 
   def update
-  
+
   end
 
   def destroy
-    User.find(params[:id]).destroy
-    redirect_to podcasts_path
+    byebug
+    User.find(session[:user_id]).destroy
+    session[:user_id] = nil
+    redirect_to "/"
   end
 
   private

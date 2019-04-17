@@ -12,3 +12,5 @@
 <h4>Your annotations</h4>
 <%@notes.each do |n|%>
 <li><%= n.content%> - on <%=link_to n.annotated_episode.title, n.annotated_episode%> from <%=link_to n.annotated_episode.podcast.name,n.annotated_episode.podcast%> </li><%end%>
+
+<%= button_to "Delete Account", {action: "destroy", id: @id}, {method: "delete", data: {confirm: "Are you sure?"}}%>
