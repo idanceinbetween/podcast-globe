@@ -23,4 +23,8 @@ class PodcastsController < ApplicationController
     redirect_to @podcast
   end
 
+  private
+  def podcast_params
+    params.require(:category).permit(:category)
+  end
 end

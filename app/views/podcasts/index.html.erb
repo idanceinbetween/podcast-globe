@@ -2,20 +2,9 @@
     <h1 class="text-center display-2">podcasts</h1>
 </div>
 
-  <select class="custom-select custom-select-lg mb-3">
-    <option selected>filter by category</option>
-    <% @categories.each do |c|%>
-      <option value=<%= "/podcasts?category=#{c.name}" %>><%= "#{c.name} (#{c.podcasts.count})" %></option>
-    <% end %>
-  </select>
-  <!--  
-  <ul class="list-group list-group-horizontal-sm">
-
-    <% @categories.each do |c|%>
-      <li class="list-group-item flex-fill"><%= link_to c.name, "/podcasts?category=#{c.name}"%> (<%=c.podcasts.count%>)</li>
-    <%end%>
-  </ul>
-  -->
+<%=form_tag podcasts_path, method: :get do%>
+  <%=select_tag "category", options_from_collection_for_select(@categories, :id, :options_display), {class:"custom-select custom-select-lg mb-3", onchange: 'this.form.submit();', include_blank: "-- Filter by Category"}%>
+<%end%>
 
   <ul class="list-group list-group-flush">
     <% @podcasts.each do |p|%>
@@ -25,4 +14,3 @@
       </li>
     <% end %>
   </ul>
-
