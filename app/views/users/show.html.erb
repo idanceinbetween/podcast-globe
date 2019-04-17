@@ -1,33 +1,73 @@
-<h1><%= @user.username%>'s Collections</h1>
+<div class="text-center display-4"><%= @user.username%>'s Page</div>
 
-<h4><%= @user.username %>'s podcasts</h4>
+<p>&nbsp;</p>
+<!-- <p align="center">Skip to content: <a href="#podcasts">Subscribed Podcasts</a> | <a href="#favourite_episodes">Favourite Episodes</a> | <a href="#annotations">Annotations</a></p> -->
+<a name="podcasts"></a>
 
-<ul>
-  <%@podcasts.each do |p|%>
-  <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-      <div class="card-header"><%= link_to p.name, p %></div>
+<h4><%=@user.username%>'s Subscribed Podcasts</h4>
+<%@podcasts.each_slice(3) do |group|%>
+<div class="row">
+  <% group.each do |p|%>
+  <div class="col-md-4">
+    <div class="card">
       <div class="card-body">
-        <p class="card-text"><%= p.description %></p>
+        <h5 class="card-title"><%= link_to p.name, p%></h5>
+        <p class="card-text"><%= (p.description.length>100) ? p.description.first(80) + "..." : p.description%></p>
       </div>
-  </div>
+      <div class="card-footer">
+        <small class="text-muted">Categories: <% p.categories.each do |c|%><%=c.name%> |<%end%></small>
+      </div>
+    </div>
+   </div>
+   <%end%>
+<p>&nbsp;</p>
+</div>
+<%end%>
 
+<p>&nbsp;</p>
+<a name="favourite_episodes"></a>
+<h4><%=@user.username%>'s Favourite Episodes:</h4>
+<%@favourite_episodes.each_slice(3) do |group|%>
+<div class="row">
+  <% group.each do |fe|%>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to fe.title, fe%></h5>
+        <p class="card-text"><%= fe.description%></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">from <%=link_to fe.podcast.name, fe.podcast%></small>
+      </div>
+    </div>
+   </div>
+   <%end%>
+<p>&nbsp;</p>
+</div>
+<%end%>
 
+<p>&nbsp;</p>
 
-  <%end%>
-</ul>
-
-
-    <p>
-      
-<b>Listens the most to podcasts from these categories:</b>
-  <%@podcasts.map(&:categories) %><font color="red"> TBC PUT HERE !</font></p>
-
-<h4>Favourite Episodes</h4>
-<%@favourite_episodes.each do |fe|%><li><%= link_to fe.title, fe%></li><%end%>
-
-<h4>Annotations</h4>
-<%@notes.each do |n|%>
-<li><%= n.content%> - on <%=link_to n.annotated_episode.title, n.annotated_episode%> from <%=link_to n.annotated_episode.podcast.name,n.annotated_episode.podcast%> </li><%end%>
+<a name="annotations"></a>
+<h4><%=@user.username%>'s Annotations:</h4>
+<%@notes.each_slice(3) do |group|%>
+<div class="row">
+  <% group.each do |n|%>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text"><%= n.content%></p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">on: <%=link_to n.annotated_episode.title, n.annotated_episode%> from <%=link_to n.annotated_episode.podcast.name,n.annotated_episode.podcast%></small>
+      </div>
+    </div>
+   </div>
+   <%end%>
+<p>&nbsp;</p>
+</div>
+<%end%>
+<p>&nbsp;</p>
 
 <h4>Followers: (<%=@user.followers.count%>)</h4>
 <%@user.followers.each do |f|%><li><%= link_to f.username, f%></li><%end%>
