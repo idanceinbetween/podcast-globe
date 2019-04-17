@@ -5,12 +5,30 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <h4><i>Cast Away: Lose yourself in the greatness of podcasts</i></h4>
   </head>
 
-  <body>
+  <body class="container">
+      <!-- navbar always visible -->
+      <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+          <a class="navbar-brand" href="/podcasts">Cast Away</a>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Lose yourself in the greatness of podcasts</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          </div>
+      </nav>
     <% if @current_user %>
     Currently logged in as: <%=@current_user.username if @current_user %>
       <%= button_to("Log out", {action: "logout", controller: "sessions"},method: "delete") %>
