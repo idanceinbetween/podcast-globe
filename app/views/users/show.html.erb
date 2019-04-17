@@ -1,1 +1,13 @@
-<h1>Hello World</h1>
+<h1><%= @user.username%>'s Collections</h1>
+
+<h4>Podcasts Subscribed To</h4>
+<%@podcasts.each do |p|%><li><%= link_to p.name, p%></li><%end%>
+<p><b>Listens the most to podcasts from these categories:</b>
+<%@podcasts.map(&:categories) %><font color="red"> TBC PUT HERE !</font></p>
+
+<h4>Favourite Episodes</h4>
+<%@favourite_episodes.each do |fe|%><li><%= link_to fe.title, fe%></li><%end%>
+
+<h4>Annotations</h4>
+<%@notes.each do |n|%>
+<li><%= n.content%> - on <%=link_to n.annotated_episode.title, n.annotated_episode%> from <%=link_to n.annotated_episode.podcast.name,n.annotated_episode.podcast%> </li><%end%>

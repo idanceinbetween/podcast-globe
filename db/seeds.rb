@@ -1,4 +1,25 @@
 require 'faker'
+#20 users
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password1"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password2"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password3"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password4"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password5"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password6"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password7"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password8"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password9"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password10"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password11"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password12"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password13"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password14"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password15"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password16"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password17"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password18"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password19"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password20"))
 
 #30 podcasts
 Podcast.create(name: "Binge Mode: Game of Thrones", description: "Join The Ringer’s Mallory Rubin and Jason Concepcion as they take their signature deep dives, ranging from 'Game of Thrones,' 'Harry Potter,' and everywhere in between.")

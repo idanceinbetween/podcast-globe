@@ -8,7 +8,7 @@
   <% @favouriters.each do |f|%> <li><%=link_to f.username, f%></li><%end%>
 <%end%>
 
-<h4>Notes by our community:</h4>
+<h4>Annotated by:</h4>
   <%if @notes.count == 0%>
     No notes available for this episode
   <%else%>
@@ -19,7 +19,7 @@
   <% @keywords.each do |k|%> <li><%=k.word%></li><%end%>
 
 <%if @siblings%>
-  <h4>Other episodes in this series: </h4>
+  <h4>Other episodes in this podcast: </h4>
     <% @siblings.each do |s|%>
   <li><%= link_to s.title, s%></li><%end%>
 <%end%>

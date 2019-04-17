@@ -11,6 +11,9 @@ end
 
 def show
   @user = User.find(params[:id])
+  @podcasts = @user.podcasts
+  @favourite_episodes = @user.favourite_episodes
+  @notes = @user.notes
 end
 
 def profile
