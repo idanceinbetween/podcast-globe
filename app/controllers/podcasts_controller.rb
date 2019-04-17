@@ -3,9 +3,11 @@ class PodcastsController < ApplicationController
     if params[:category]
       @podcasts = Category.find(params[:category]).podcasts.uniq.sort_by { |p| p.subscriptions.size }.reverse
       @categories = Category.order(:name)
+      @category = "in #{Category.find(params[:category]).name}"
     else
       @podcasts = Podcast.all.sort_by { |p| p.subscriptions.size }.reverse
       @categories = Category.order(:name)
+      @category = nil
     end
   end
 
