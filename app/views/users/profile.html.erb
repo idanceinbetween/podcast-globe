@@ -1,8 +1,7 @@
 <h1>Welcome, <%= @user.username%>!</h1>
-<p>Here are your stuff!</p>
 
-<h4>Podcasts Subscribed To</h4>
-<%@podcasts.each do |p|%><li><%= link_to p.name, p%></li><%end%>
+<h4>Your podcasts</h4>
+  <%@podcasts.each do |p|%><li><%= link_to p.name, p%></li><%end%>
 
 <p><b>You listen the most to podcasts from these categories:</b>
 <%@podcasts.map(&:categories) %><font color="red"> TBC PUT HERE !</font></p>

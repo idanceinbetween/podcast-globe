@@ -1,6 +1,13 @@
 <h1 class="text-center display-4"><%= @podcast.name %></h1>
 
-<p class="text-center"><% @podcast.categories.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.name}" %> <% end %></p>
+<p class="text-center">
+  <% @podcast.categories.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.name}" %> <% end %>
+</p>
+
+<div class="text-center">
+    <%= button_to((@user.podcasts.include?(@podcast) ? "unsubscribe" : "subscribe"), subscription_path) %>
+</div>
+
 <p class="lead">
   <%= @podcast.description %>
 </p>

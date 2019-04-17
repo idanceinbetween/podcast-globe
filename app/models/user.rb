@@ -16,4 +16,8 @@ class User < ApplicationRecord
   # has_many :passive_followships, class_name: "Followship", foreign_key: "followee_id"
   # has_many :followers, through: :passive_followships, source: :follower
 
+  def toggle_subscription(podcast)
+    !self.podcasts.include?(podcast) ? self.podcasts.push(podcast) : self.podcasts.delete(podcast)
+  end
+
 end
