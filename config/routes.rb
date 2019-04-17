@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   # session routes
   get "/login_form", to: "sessions#login_form", as: "login_form"
   post "/login", to: "sessions#login", as: "login"
-  delete "/logout", to: "sessions#logout"
-  get "/profile", to: "users#profile"
+  delete "/logout", to: "sessions#logout", as: "logout"
+  get "/profile", to: "users#profile", as: "profile"
 
   # podcasts routes
   resources :podcasts, only: [:show, :index]

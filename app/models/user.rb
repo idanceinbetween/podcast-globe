@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :podcasts, through: :subscriptions
 
+  validates :username, uniqueness: true, presence: true
+  # validates :password_digest, presence: true
+
   has_secure_password
   #
   # has_many :followships
