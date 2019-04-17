@@ -1,7 +1,7 @@
 class PodcastsController < ApplicationController
   def index
     if params[:category]
-      @podcasts = Category.find_by(name: params[:category]).podcasts
+      @podcasts = Category.find(params[:category]).podcasts
       @categories = Category.order(:name)
     else
       @podcasts = Podcast.order(:name)
@@ -16,4 +16,8 @@ class PodcastsController < ApplicationController
     @subscribers = @podcast.subscribers
   end
 
+  private
+  def podcast_params
+    params.require(:category).permit(:category)
+  end
 end
