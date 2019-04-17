@@ -15,8 +15,11 @@ Rails.application.routes.draw do
   resources :episodes, only: [:show]
   post "/episodes/:id/favouritisation", to: "episodes#favouritisation", as: "favouritisation"
 
-  # others
+  # user routes
   resources :users
+  post "/users/:id/followship", to: "users#followship", as: "followship"
+
+  #keyword routes
   resources :keywords, only: [:show]
 
 end

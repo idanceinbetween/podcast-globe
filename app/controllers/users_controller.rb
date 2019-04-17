@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    session[:user_id] ? @me = User.find(session[:user_id]) : @me = nil
     @podcasts = @user.podcasts
     @favourite_episodes = @user.favourite_episodes
     @notes = @user.notes
@@ -56,6 +57,13 @@ class UsersController < ApplicationController
     User.find(session[:user_id]).destroy
     session[:user_id] = nil
     redirect_to "/"
+  end
+
+  def followship
+    @user = User.find(params[:id])
+    session[:user_id] ? @me = User.find(session[:user_id]) : @me = nil
+    current_user.toggle_followship(@user)
+    redirect_to @user
   end
 
   private

@@ -24,4 +24,8 @@ class User < ApplicationRecord
     !self.favourite_episodes.include?(episode) ? self.favourite_episodes.push(episode) : self.favourite_episodes.delete(episode)
   end
 
+  def toggle_followship(followed)
+    !self.following.include?(followed) ? self.following.push(followed) : self.following.delete(followed)
+  end
+
 end
