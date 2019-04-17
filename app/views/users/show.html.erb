@@ -11,3 +11,9 @@
 <h4>Annotations</h4>
 <%@notes.each do |n|%>
 <li><%= n.content%> - on <%=link_to n.annotated_episode.title, n.annotated_episode%> from <%=link_to n.annotated_episode.podcast.name,n.annotated_episode.podcast%> </li><%end%>
+
+<h4>Followers: (<%=@user.followers.count%>)</h4>
+<%@user.followers.each do |f|%><li><%= link_to f.username, f%></li><%end%>
+
+<h4>Following: (<%=@user.following.count%>)</h4>
+<%@user.following.each do |f|%><li><%= link_to f.username, f%></li><%end%></h4>
