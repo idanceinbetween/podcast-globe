@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :subscriptions, dependent: :destroy
   has_many :podcasts, through: :subscriptions, dependent: :destroy
 
+  validates :username, uniqueness: true, presence: true
+  # validates :password_digest, presence: true
+
   has_secure_password
 
   has_many :active_relationships, class_name:  "Followship", foreign_key: "follower_id", dependent: :destroy

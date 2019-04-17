@@ -1,11 +1,12 @@
 <div>
-    <h1 class="text-center display-2">podcasts</h1>
-    <div class="text-center display-4"><%= @category%></div>
+    <p class="text-center display-2">podcasts</p>
+    <p class="text-center display-4"><%= @category %></p>
 </div>
 
-<%=form_tag podcasts_path, method: :get do%>
-  <%=select_tag "category", options_from_collection_for_select(@categories, :id, :category_podcast_count), {class:"custom-select custom-select-lg mb-3", onchange: "this.form.submit();", include_blank: "-- Filter by Category"}%>
-<%end%>
+<section class="w-75 mx-auto">
+  <%=form_tag podcasts_path, method: :get do%>
+    <%=select_tag "category", options_from_collection_for_select(@categories, :id, :category_podcast_count), class:"custom-select custom-select-lg mb-3", onchange: "this.form.submit();", include_blank: "-- Filter by Category"%>
+  <%end%>
 
   <ul class="list-group list-group-flush">
     <% @podcasts.each do |p|%>
@@ -15,3 +16,4 @@
       </li>
     <% end %>
   </ul>
+</section>
