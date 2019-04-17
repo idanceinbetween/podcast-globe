@@ -1,26 +1,25 @@
 require 'faker'
-
 #20 users
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
-  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email)
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password1"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password2"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password3"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password4"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password5"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password6"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password7"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password8"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password9"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password10"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password11"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password12"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password13"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password14"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password15"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password16"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password17"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password18"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password19"))
+  User.create(username: Faker::Artist.unique.name, email: Faker::Internet.email, password_digest: BCrypt::Password.create("password20"))
 
 #30 podcasts
 Podcast.create(name: "Binge Mode: Game of Thrones", description: "Join The Ringer’s Mallory Rubin and Jason Concepcion as they take their signature deep dives, ranging from 'Game of Thrones,' 'Harry Potter,' and everywhere in between.")
@@ -53,32 +52,25 @@ Podcast.create(name: "The Panda Pod", description:"The Panda Pod is a monthly po
 Podcast.create(name: "Chompers", description: "A fun-filled twice-daily podcast to keep kids brushing teeth.")
 Podcast.create(name: "Time to Eat the Dogs", description:"A podcast about science, history, and exploration. Michael Robinson interviews scientists, journalists, and adventurers about life at the extreme.")
 Podcast.create(name: "You Made It Weird with Pete Holmes", description:"Everybody has secret weirdness, Pete Holmes gets comedians to share theirs.")
-
 #60 episodes
 8.times do
   Episode.create(title: Faker::Marketing.buzzwords, description: Faker::Hipster.paragraph, podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 14.times do
   Episode.create(title: Faker::Marketing.buzzwords, description: Faker::Company.bs, podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 18.times do
   Episode.create(title: Faker::Books::Lovecraft.tome, description: Faker::Books::Lovecraft.sentence(2), podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 3.times do
   Episode.create(title: Faker::Marketing.buzzwords, description: Faker::Quote.matz, podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 9.times do
   Episode.create(title: Faker::Marketing.buzzwords, description: Faker::GreekPhilosophers.quote, podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 8.times do
   Episode.create(title: Faker::Marketing.buzzwords, description: Faker::Books::Lovecraft.sentence(4), podcast_id: rand(1..30), number: rand(4..90), length: rand(1..90))
 end
-
 #16 categories
   Category.create(name: "Arts", description: "All the thoughts that you need to get creative and expressive.")
   Category.create(name: "Business", description: "Helps you build the next successful business.")
@@ -95,66 +87,52 @@ end
   Category.create(name: "Society and Culture", description: "Society is inside of man and man is inside society, and you cannot even create a truthfully drawn psychological entity on the stage until you understand his social relations and their power to make him what he is and to prevent him from being what he is not. The fish is in the water and the water is in the fish. - ARTHUR MILLER")
   Category.create(name: "Sports and Recreation", description: "For many, sports may merely be a source of recreation, but for some people, it is a passion, or even a matter of life and death. Good guys are a dime a dozen, but an aggressive leader is priceless. In the end, the game comes down to one thing: man against man. May the best man win.")
   Category.create(name: "Technology", description: "Never trust a computer you can’t throw out a window.— Steve Wozniak")
-  Category.create(name: "TV & Film", description: "In case you need a pick-me-up, go down memory lane with these iconic lines from these iconic movies and television shows.")
-
+  Category.create(name: "TV and Film", description: "In case you need a pick-me-up, go down memory lane with these iconic lines from these iconic movies and television shows.")
 #60 keywords
 20.times do
   Keyword.create(word: Faker::Hacker.noun)
 end
-
 9.times do
   Keyword.create(word: Faker::ProgrammingLanguage.name)
 end
-
 3.times do
   Keyword.create(word: Faker::Book.author)
 end
-
 13.times do
   Keyword.create(word: Faker::Books::Lovecraft.word)
 end
-
 15.times do
   Keyword.create(word: Faker::Hipster.word)
 end
-
 #44 notes
 13.times do
   Note.create(content: Faker::Quote.yoda, episode_id: rand(1..60), user_id: rand(1..20))
 end
-
 8.times do
   Note.create(content: Faker::Company.catch_phrase, episode_id: rand(1..60), user_id: rand(1..20))
 end
-
 15.times do
   Note.create(content: Faker::Hacker.say_something_smart, episode_id: rand(1..60), user_id: rand(1..20))
 end
-
 8.times do
   Note.create(content: Faker::Books::Lovecraft.paragraph(1), episode_id: rand(1..60), user_id: rand(1..20))
 end
-
 #40 subscriptions for 20 users/30 podcasts
 40.times do
   Subscription.create(user_id: rand(1..20), podcast_id: rand(1..30))
 end
-
 #34 favourites for 20 users/60 episodes
 34.times do
   Favouritisation.create(user_id: rand(1..20), episode_id: rand(1..60))
 end
-
 #60 relationships across 20 users
 # 60.times do
 #   Followship.create(followed_id: rand(1..20), follower_id: rand(1..20))
 # end
-
 #160 keywordisation for 60 episodes and 60 keywords
 160.times do
   Keywordisation.create(keyword_id: rand(1..60), episode_id: rand(1..60))
 end
-
 50.times do
   Categorisation.create(podcast_id: rand(1..30), category_id: rand(1..16))
 end
