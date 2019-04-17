@@ -1,19 +1,28 @@
-<h1>All Podcasts</h1>
+<div>
+    <h1 class="text-center display-2">podcasts</h1>
+</div>
 
-<p>Categories</p>
-
+  <select class="custom-select custom-select-lg mb-3">
+    <option selected>filter by category</option>
+    <% @categories.each do |c|%>
+      <option value=<%= "/podcasts?category=#{c.name}" %>><%= "#{c.name} (#{c.podcasts.count})" %></option>
+    <% end %>
+  </select>
+  <!--  
   <ul class="list-group list-group-horizontal-sm">
 
     <% @categories.each do |c|%>
       <li class="list-group-item flex-fill"><%= link_to c.name, "/podcasts?category=#{c.name}"%> (<%=c.podcasts.count%>)</li>
     <%end%>
   </ul>
+  -->
 
-
-
-  <div class="list-group-flush">
+  <ul class="list-group list-group-flush">
     <% @podcasts.each do |p|%>
-      <%= link_to p.name, p, class: "list-group-item list-group-item-action" %>
-    <%end%>
-  </div>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to p.name, p %>
+        <span class="badge badge-primary badge-pill"><%= p.subscriptions.count %></span>
+      </li>
+    <% end %>
+  </ul>
 

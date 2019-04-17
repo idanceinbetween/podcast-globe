@@ -1,23 +1,30 @@
-<h1><%= @podcast.name%></h1>
+<h1 class="text-center display-4"><%= @podcast.name %></h1>
 
-<h4>Description: </h4>
-<p><%= @podcast.description%></p>
+<p class="text-center"><% @podcast.categories.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.name}" %> <% end %></p>
 
-<h4>Episodes:</h4>
-<p>
-<%@podcast.episodes.each do |e|%>
-  <li><%= link_to e.title.capitalize, e%>:<br>
-    <%= e.description.first(200)%>...<%= link_to "Read more", e%><br>
-   (Keywords: <% e.keywords.each do |k|%> <%= k.word%> <%end%>)</li>
-<%end%>
+<p class="lead">
+  <%= @podcast.description %>
 </p>
 
-<b>Categories:</b><% @podcast.categories.uniq.each do |c|%> <%= link_to c.name, "/podcasts#{c.name}"%> |
-<%end%>
+<div class="card-deck">
+  <% @podcast.episodes.each_with_index do |e, i| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to e.title.capitalize, e %></h5>
+        <p class="card-text"><%= e.description.first(200) %>...</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted"><% e.keywords.each do |k| %> <%= link_to k.word, e %> <% end %></small>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<h4>Subscribed by:</h4>
-<p>
-  <%@podcast.users.each do |u|%>
-  <li><%=link_to u.username, u%></li>
-  <%end%>
-</p>
+<div>
+  <h4>subscribers</h4>
+    <ul>
+      <% @podcast.users.each do |u| %>
+        <li><%= link_to u.username, u %></li>
+      <%end%>
+    </ul>
+</div>
