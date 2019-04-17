@@ -29,7 +29,7 @@
           <p class="card-text"><%= e.description.first(200) %>...</p>
         </div>
         <div class="card-footer">
-          <small class="text-muted"><% e.keywords.each do |k| %> <%= link_to k.word, e %> <% end %></small>
+          <small class="text-muted"><% e.keywords.each do |k| %> <%= link_to k.word, k %> <% end %></small>
         </div>
       </div>
     <% end %>

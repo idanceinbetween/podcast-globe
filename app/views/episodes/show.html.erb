@@ -16,7 +16,7 @@
   <b>Show Notes: </b><%= @episode.description %>
 </p>
 <p class="text-left">
-  Episode Keywords: <% @keywords.each do |k|%><%=k.word%>  <% end %>
+  Episode Keywords: <% @keywords.each do |k|%><%=link_to k.word, k %> | <% end %>
 </p>
 <p>&nbsp;</p>
 
