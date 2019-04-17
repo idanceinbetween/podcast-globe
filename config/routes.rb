@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#login", as: "login"
   delete "/logout", to: "sessions#logout", as: "logout"
   get "/profile", to: "users#profile", as: "profile"
+  get "/profile/followships", to: "users#followshipslist", as: "followshipslist"
 
   # podcasts routes
   resources :podcasts, only: [:show, :index]

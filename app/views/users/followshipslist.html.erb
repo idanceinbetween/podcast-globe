@@ -1,0 +1,15 @@
+<section class="w-75 mx-auto">
+<div class="text-center display-4">Your Followships</div>
+
+<p>&nbsp;</p>
+<p class="text-center"><%= link_to "all followships", "/profile/followships"%> | <%= link_to "followers only", "/profile/followships?q=followers"%> | <%= link_to "following only", "/profile/followships?q=following"%></p>
+
+<ul class="list-group list-group-flush">
+  <% @followships.each do |f|%>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <%= link_to f.username, f %>(<% if @followers.include?(f) && @following.include?(f)%>you follow each other<%elsif @followers.include?(f) && !@following.include?(f)%>following you<%elsif !@followers.include?(f) && @following.include?(f)%>you follow<%end%>)
+    </li>
+  <% end %>
+</ul>
+
+</section>

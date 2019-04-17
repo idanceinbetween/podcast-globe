@@ -2,7 +2,7 @@
   <div class="text-center display-4"><%= @user.username%>'s Page</div>
   <p>&nbsp;</p>
   <div class="text-center">
-      <%= (button_to((@me.following.include?(@user) ? "unfollow" : "follow"), favouritisation_path)) if @me %>
+      <%= (button_to((@me.following.include?(@user) ? "unfollow" : "follow"), followship_path)) if @me %>
   </div>
 </header>
 <p>&nbsp;</p>

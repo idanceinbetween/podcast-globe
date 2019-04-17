@@ -9,7 +9,9 @@
 <h4>Account Management</h4>
 <%= button_to "Delete Account", {action: "destroy", id: @id, style: {display: :inline}}, {method: "delete", data: {confirm: "Are you sure?"}}%>
 
-<p>&nbsp;</p>
+<br>
+<h4><%= link_to "Your Followships", "/profile/followships"%></h4>
+<br>
 <a name="podcasts"></a>
 
 <h4>Your subscribed podcast:</h4>

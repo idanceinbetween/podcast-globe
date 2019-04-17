@@ -53,7 +53,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    byebug
     User.find(session[:user_id]).destroy
     session[:user_id] = nil
     redirect_to "/"
@@ -64,6 +63,28 @@ class UsersController < ApplicationController
     session[:user_id] ? @me = User.find(session[:user_id]) : @me = nil
     current_user.toggle_followship(@user)
     redirect_to @user
+  end
+
+  def followshipslist
+    if !@current_user
+      flash[:notice] = "Please sign in to continue!"
+      redirect_to login_form_path
+    elsif @current_user && (params[:q]=="following")
+      @user = User.find(session[:user_id])
+      @following = @user.following
+      @followers = @user.followers
+      @followships = @following
+    elsif @current_user && (params[:q]=="followers")
+      @user = User.find(session[:user_id])
+      @following = @user.following
+      @followers = @user.followers
+      @followships = @followers
+    else
+      @user = User.find(session[:user_id])
+      @following = @user.following
+      @followers = @user.followers
+      @followships = (@following + @followers).uniq
+    end
   end
 
   private
