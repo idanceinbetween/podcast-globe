@@ -4,7 +4,7 @@
 </div>
 
 <%=form_tag podcasts_path, method: :get do%>
-  <%=select_tag "category", options_from_collection_for_select(@categories, :id, :category_podcast_count), {class:"custom-select custom-select-lg mb-3", onchange: "this.form.submit();", include_blank: "-- Filter by Category"}%>
+  <%=select_tag "category", options_from_collection_for_select(@categories, :id, :category_podcast_count), class:"custom-select custom-select-lg mb-3", onchange: "this.form.submit();", include_blank: "-- Filter by Category"%>
 <%end%>
 
   <ul class="list-group list-group-flush">

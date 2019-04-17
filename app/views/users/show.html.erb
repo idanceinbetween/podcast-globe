@@ -1,9 +1,26 @@
 <h1><%= @user.username%>'s Collections</h1>
 
-<h4>Podcasts Subscribed To</h4>
-<%@podcasts.each do |p|%><li><%= link_to p.name, p%></li><%end%>
-<p><b>Listens the most to podcasts from these categories:</b>
-<%@podcasts.map(&:categories) %><font color="red"> TBC PUT HERE !</font></p>
+<h4><%= @user.username %>'s podcasts</h4>
+
+<ul>
+  <%@podcasts.each do |p|%>
+  <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header"><%= link_to p.name, p %></div>
+      <div class="card-body">
+        <p class="card-text"><%= p.description %></p>
+      </div>
+  </div>
+
+
+
+  <%end%>
+</ul>
+
+
+    <p>
+      
+<b>Listens the most to podcasts from these categories:</b>
+  <%@podcasts.map(&:categories) %><font color="red"> TBC PUT HERE !</font></p>
 
 <h4>Favourite Episodes</h4>
 <%@favourite_episodes.each do |fe|%><li><%= link_to fe.title, fe%></li><%end%>

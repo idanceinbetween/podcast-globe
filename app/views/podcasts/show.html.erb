@@ -5,7 +5,7 @@
 </p>
 
 <div class="text-center">
-    <%= button_to((@user.podcasts.include?(@podcast) ? "unsubscribe" : "subscribe"), subscription_path) %>
+    <%= (button_to((@user.podcasts.include?(@podcast) ? "unsubscribe" : "subscribe"), subscription_path)) if @user %>
 </div>
 
 <p class="lead">
