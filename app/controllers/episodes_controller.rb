@@ -12,13 +12,13 @@ class EpisodesController < ApplicationController
   end
 
   def favouritisation
-    @episode = Episode.find(params[:id])
-    current_user.toggle_favouritisation(@episode)
-    redirect_to @episode
+    episode = Episode.find(params[:id])
+    current_user.toggle_favouritisation(episode)
+    redirect_to podcast_path(episode.podcast)
   end
 
   def play
-    
+
   end
 
 end

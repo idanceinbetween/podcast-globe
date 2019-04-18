@@ -23,73 +23,73 @@
 
 <a name="favourite"></a>
 <h4>Favourited by:</h4>
-<%if @favouriters.count == 0%>
+<%if @favouriters.count == 0 %>
   No one favourited this episode yet!
 <%else%>
-  <%@favouriters.each_slice(3) do |group|%>
+  <% @favouriters.each_slice(3) do |group| %>
   <div class="row">
     <% group.each do |f|%>
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <p class="card-text"><%= link_to f.username, f%></p>
+          <p class="card-text"><%= link_to f.username, f %></p>
         </div>
       </div>
      </div>
      <%end%>
   <p>&nbsp;</p>
   </div>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>
 <p>&nbsp;</p>
 
 <a name="annotations"></a>
 <h4>Annotations:</h4>
-<%if @notes.count == 0%>
+<% if @notes.count == 0 %>
   No notes available for this episode
-<%else%>
-  <%@notes.each_slice(3) do |group|%>
+<% else %>
+  <% @notes.each_slice(3) do |group| %>
   <div class="row">
-    <% group.each do |n|%>
+    <% group.each do |n| %>
     <div class="col-md-4">
       <div class="card">
         <div class="card-body">
-          <p class="card-text"><%= n.content%></p>
+          <p class="card-text"><%= n.content %></p>
         </div>
         <div class="card-footer">
-          <small class="text-muted">Notated by: <%=link_to n.notator.username, n.notator%></small>
+          <small class="text-muted">Notated by: <%= link_to n.notator.username, n.notator %></small>
         </div>
       </div>
      </div>
-     <%end%>
+     <% end %>
   <p>&nbsp;</p>
   </div>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>
 
 <p>&nbsp;</p>
 
 <a name="related_episodes"></a>
 <h4>Other episodes from the same podcast:</h4>
 <%if @siblings%>
-  <%@siblings.each_slice(3) do |group|%>
+  <% @siblings.each_slice(3) do |group| %>
   <div class="row">
     <% group.each do |s|%>
     <div class="col-md-4">
       <div class="card">
-        <div class="card-body"><%= link_to s.title, s%>
-          <p class="card-text"><%= s.description.first(100)%></p>
+        <div class="card-body"><%= link_to s.title, s %>
+          <p class="card-text"><%= s.description.first(100) %></p>
         </div>
         <div class="card-footer">
           <small class="text-muted"> </small>
         </div>
       </div>
      </div>
-     <%end%>
+     <% end %>
   <p>&nbsp;</p>
   </div>
-  <%end%>
-<%end%>
+  <% end %>
+<% end %>
 
 <p>&nbsp;</p>
 </section>

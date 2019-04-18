@@ -31,9 +31,9 @@ class PodcastsController < ApplicationController
   end
 
   def subscription
-    @podcast = Podcast.find(params[:id])
-    current_user.toggle_subscription(@podcast)
-    redirect_to @podcast
+    podcast = Podcast.find(params[:id])
+    current_user.toggle_subscription(podcast)
+    redirect_to podcast
   end
 
   private
