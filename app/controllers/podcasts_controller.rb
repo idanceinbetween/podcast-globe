@@ -1,11 +1,21 @@
 class PodcastsController < ApplicationController
   def index
-    if params[:category]
-      @podcasts = Category.find(params[:category]).podcasts.uniq.sort_by { |p| p.subscriptions.size }.reverse
+    if index_popularity_category_default || index_popularity_category
+      @podcasts = Category.find(params[:category]).podcasts.uniq.sort_by { |p| p.subscribers.size }.reverse
       @categories = Category.order(:name)
       @category = "in #{Category.find(params[:category]).name}"
-    else
-      @podcasts = Podcast.all.sort_by { |p| p.subscriptions.size }.reverse
+      @cat_id = params[:category]
+    elsif index_alphabetical_category
+      @podcasts = Category.find(params[:category]).podcasts.order(:name)
+      @categories = Category.order(:name)
+      @category = "in #{Category.find(params[:category]).name}"
+      @cat_id = params[:category]
+    elsif index_alphabetical_all
+      @podcasts = Podcast.order(:name)
+      @categories = Category.order(:name)
+      @category = nil
+    elsif index_popularity_all_default || index_all_default
+      @podcasts = Podcast.all.sort_by { |p| p.subscribers.size }.reverse
       @categories = Category.order(:name)
       @category = nil
     end
@@ -28,5 +38,29 @@ class PodcastsController < ApplicationController
   private
   def podcast_params
     params.require(:category).permit(:category)
+  end
+
+  def index_all_default
+    params[:sort] == nil && params[:category] == nil
+  end
+
+  def index_popularity_all_default
+    params[:sort] == "popular" && params[:category] == ""
+  end
+
+  def index_alphabetical_all
+    params[:sort] == "alphabetical" && params[:category].to_s.length == 0
+  end
+
+  def index_popularity_category_default
+    params[:sort] == nil && params[:category].to_s.length > 0
+  end
+
+  def index_popularity_category
+    params[:sort] == "popular" && params[:category].to_s.length > 0
+  end
+
+  def index_alphabetical_category
+    params[:sort] == "alphabetical" && params[:category].to_s.length > 0
   end
 end
