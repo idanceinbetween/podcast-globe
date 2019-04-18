@@ -28,10 +28,7 @@ class PodcastsController < ApplicationController
   end
 
   def query
-    response = Unirest.get "https://listen-api.listennotes.com/api/v2/curated_podcasts?page=3",
-      headers:{
-        "X-ListenAPI-Key" => "ce714becd651485ca296c1af7b9a9a0c"
-      }
+    response = Unirest.get("https://listen-api.listennotes.com/api/v2/curated_podcasts",headers:{"X-ListenAPI-Key" => "ce714becd651485ca296c1af7b9a9a0c"})
     byebug
     @response = response.body.size
   end
