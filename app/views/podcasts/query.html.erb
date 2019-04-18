@@ -1,1 +1,14 @@
 <h1><%= @response%></h1>
+
+PODCAST INFO
+@response[:"curated_lists"] #array of hashes
+@response[:"curated_lists"][0] #first curator
+@response[:"curated_lists"][0]["podcasts"][0] #first curator's first podcast
+@response[:"curated_lists"][0]["podcasts"][0][:"id"]
+@response[:"curated_lists"][0]["podcasts"][0][:"listennotes_url"]
+@response[:"curated_lists"][0]["podcasts"][0][:"image"]
+@response[:"curated_lists"][0]["podcasts"][0][:"title"]
+@response[:"curated_lists"][0]["podcasts"][0][:thumbnail"]
+
+What info do I want to extract?
+
