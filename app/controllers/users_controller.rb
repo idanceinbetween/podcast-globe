@@ -61,6 +61,13 @@ class UsersController < ApplicationController
     redirect_to "/"
   end
 
+  def followship
+    @user = User.find(params[:id])
+    session[:user_id] ? @me = User.find(session[:user_id]) : @me = nil
+    current_user.toggle_followship(@user)
+    redirect_to @user
+  end
+
   private
 
   def user_params
