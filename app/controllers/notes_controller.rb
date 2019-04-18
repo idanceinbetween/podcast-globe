@@ -1,35 +1,26 @@
 class NotesController < ApplicationController
 
-  def new
-    if current_user
-      redirect_to current_user
-    else
-      @user = User.new
-    end
-  end
-
   def create
-
-  end
-
-  def edit
-
-  end
-
-  def update
-    
-  end
-
-  def destroy
     byebug
-    User.find(session[:user_id]).destroy
-    session[:user_id] = nil
-    redirect_to "/"
+    @note = Note.create(note_params)
+    redirect_to episode_path(@note.episode)
   end
+
+  # def edit
+
+  # end
+
+  # def update
+    
+  # end
+
+  # def destroy
+ 
+  # end
 
   private
 
-  def user_params
-    params.require(:user).permit(:username, :password)
+  def note_params
+    params.require(:note).permit(:content, :user_id, :episode_id)
   end
 end

@@ -9,6 +9,7 @@ class EpisodesController < ApplicationController
     if @podcast.episodes.size > 1
       @siblings = @podcast.episodes.select{|e| e != @episode}
     end
+    @note = Note.new
   end
 
   def favouritisation

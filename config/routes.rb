@@ -29,4 +29,7 @@ Rails.application.routes.draw do
   #keyword routes
   resources :keywords, only: [:show]
 
+  # note routes
+  resources :notes
+
 end
