@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post "/podcasts/:id/subscription", to: "podcasts#subscription", as: "subscription"
 
   #episode routes
-  resources :episodes, only: [:show]
+  resources :episodes, only: [:show, :index]
   post "/episodes/:id/favouritisation", to: "episodes#favouritisation", as: "favouritisation"
 
   # user routes
@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   post "/users/:id/followship", to: "users#followship", as: "followship"
 
   #keyword routes
-  resources :keywords, only: [:show]
+  resources :keywords, only: [:show, :index]
 
 end

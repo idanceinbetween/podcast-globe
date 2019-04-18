@@ -6,4 +6,5 @@ class Episode < ApplicationRecord
   has_many :notators, through: :notes, dependent: :destroy
   has_many :favouritisations, dependent: :destroy
   has_many :favouriters, through: :favouritisations, dependent: :destroy
+
 end
