@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt'
 gem 'figaro'
 gem 'unirest'
+gem 'rest-client'
 
 # Bootstrap and Jquery-rails are for beauty / CSS
 gem 'bootstrap'

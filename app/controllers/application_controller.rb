@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
   def reset_session
     session[:user_id] = nil
   end
+
 end

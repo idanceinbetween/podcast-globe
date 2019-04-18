@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "podcasts#index"
 
+  #search routes
+  get "/search", to: "searches#apple", as: "search"
+  post "/search", to: "searches#results"
+
   # session routes
   get "/login_form", to: "sessions#login_form", as: "login_form"
   post "/login", to: "sessions#login", as: "login"
@@ -11,10 +15,12 @@ Rails.application.routes.draw do
   # podcasts routes
   resources :podcasts, only: [:show, :index]
   post "/podcasts/:id/subscription", to: "podcasts#subscription", as: "subscription"
+  get "/podcasts_query", to: "podcasts#query"
 
   #episode routes
   resources :episodes, only: [:show]
   post "/episodes/:id/favouritisation", to: "episodes#favouritisation", as: "favouritisation"
+  post "/episodes/:id/play", to: "episodes#play", as: "play"
 
   # user routes
   resources :users

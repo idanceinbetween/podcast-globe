@@ -13,7 +13,7 @@
 <section class="w-75 mx-auto">
 
 <p class="lead">
-  <b>Show Notes: </b><%= @episode.description %>
+  <b>Show Notes: </b><%= @episode.description %><%= image_tag("playbutton.png", size: "25x25", alt: "like") %>
 </p>
 <p class="text-left">
   Episode Keywords: <% @keywords.each do |k|%><%=link_to k.word, k %> | <% end %>

@@ -17,5 +17,8 @@ class EpisodesController < ApplicationController
     redirect_to @episode
   end
 
+  def play
+    
+  end
 
 end

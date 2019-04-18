@@ -1,3 +1,5 @@
+require 'unirest'
+
 class PodcastsController < ApplicationController
   def index
     if params[:category]
@@ -9,6 +11,15 @@ class PodcastsController < ApplicationController
       @categories = Category.order(:name)
       @category = nil
     end
+  end
+
+  def query
+    @p_response = Unirest.get "https://listen-api.listennotes.com/api/v2/curated_podcasts?page=1",
+      headers:{
+        "X-ListenAPI-Key" => "7ec60ebc8b274880a3ab6c9759b26cd6",
+      }
+
+    @p_id = @p_response.body.length
   end
 
   def show
