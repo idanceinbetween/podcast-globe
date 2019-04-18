@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   post "/users/:id/followship", to: "users#followship", as: "followship"
 
   #keyword routes
-  resources :keywords, only: [:show, :index]
+  resources :keywords, only: [:show, :index, :create]
 
 end

@@ -13,6 +13,12 @@ class KeywordsController < ApplicationController
     @episodes = @keyword.episodes
   end
 
+  def create
+    byebug
+    @keyword = Keyword.find_by(word: params[:word])
+    redirect_to @keyword
+  end
+
   private
 
 end

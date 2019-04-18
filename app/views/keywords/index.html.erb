@@ -10,6 +10,18 @@
   <%= link_to "sort by number of episodes (default)", "/keywords"%> | <%= link_to "sort by alphabetical order", "/keywords?sort=alphabetical"%>
 </p>
 
+<p class="text-center">
+<%= form_tag keywords_path do%>
+     <%= text_field_tag :word, "", list: "keywords_autocomplete" %>
+         <datalist id="keywords_autocomplete">
+             <% Keyword.order(:name).each do |keyword| %>
+                 <option value="<%= keyword.word %>">
+             <% end %>
+         </datalist>
+ <%= submit_tag "Go" %>
+ <-- <i>Would anyone help me to move this to the middle?</i>
+<% end %>
+</p>
 
   <ul class="list-group list-group-flush">
     <% @keywords.each do |k|%>
