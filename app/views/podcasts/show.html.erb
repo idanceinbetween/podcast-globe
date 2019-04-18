@@ -2,7 +2,7 @@
   <h1 class="text-center display-4"><%= @podcast.name %></h1>
 
 <p class="text-center">
-  <% @podcast.categories.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.id}" %> <% end %>
+  <% @podcast.categories.each do |c|%> <%= link_to c.name, "/podcasts?category=#{c.id}" %> | <% end %>
 </p>
 
   <div class="text-center">
