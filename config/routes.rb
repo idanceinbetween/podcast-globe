@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # podcasts routes
   resources :podcasts, only: [:show, :index]
   post "/podcasts/:id/subscription", to: "podcasts#subscription", as: "subscription"
+  get "/query", to: "podcasts#query", as: "query"
 
   #episode routes
   resources :episodes, only: [:show]

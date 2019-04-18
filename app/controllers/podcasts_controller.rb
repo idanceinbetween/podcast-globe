@@ -1,3 +1,5 @@
+require 'unirest'
+
 class PodcastsController < ApplicationController
   def index
     if params[:category]
@@ -23,6 +25,15 @@ class PodcastsController < ApplicationController
     @podcast = Podcast.find(params[:id])
     current_user.toggle_subscription(@podcast)
     redirect_to @podcast
+  end
+
+  def query
+    response = Unirest.get "https://listen-api.listennotes.com/api/v2/curated_podcasts?page=3",
+      headers:{
+        "X-ListenAPI-Key" => "ce714becd651485ca296c1af7b9a9a0c"
+      }
+    byebug
+    @response = response.body.size
   end
 
   private
