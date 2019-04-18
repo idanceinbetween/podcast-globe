@@ -1,0 +1,24 @@
+<div>
+    <p class="text-center display-2">episodes</p>
+    <p class="text-center display-5"><%= @keyword %></p>
+</div>
+
+<section class="w-75 mx-auto">
+  <%=form_tag episodes_path, method: :get do%>
+  <%=select_tag "keyword", options_from_collection_for_select(@keywords, :id, :keyword_episodes_count), class:"custom-select custom-select-lg mb-3", onchange: "this.form.submit();", include_blank: "-- Filter by Keyword (number of episodes in this category)"%>
+  <%end%>
+
+<p class="text-center">
+  <%= link_to "sort by popularity (default)", "/episodes?sort=popular&&keyword=#{@keyword_id}"%> | <%= link_to "sort by alphabetical order", "/episodes?sort=alphabetical&&keyword=#{@keyword_id}"%>
+</p>
+
+
+  <ul class="list-group list-group-flush">
+    <% @episodes.each do |e|%>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to e.title, e %>
+        <span class="badge badge-primary badge-pill"><%= e.favouriters.count %></span>
+      </li>
+    <% end %>
+  </ul>
+</section>

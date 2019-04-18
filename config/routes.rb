@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/podcasts_query", to: "podcasts#query"
 
   #episode routes
-  resources :episodes, only: [:show]
+  resources :episodes, only: [:show, :index]
   post "/episodes/:id/favouritisation", to: "episodes#favouritisation", as: "favouritisation"
   post "/episodes/:id/play", to: "episodes#play", as: "play"
 
@@ -27,6 +27,6 @@ Rails.application.routes.draw do
   post "/users/:id/followship", to: "users#followship", as: "followship"
 
   #keyword routes
-  resources :keywords, only: [:show]
+  resources :keywords, only: [:show, :index, :create]
 
 end
