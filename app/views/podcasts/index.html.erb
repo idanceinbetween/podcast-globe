@@ -16,6 +16,9 @@
   <ul class="list-group list-group-flush">
     <% @podcasts.each do |p|%>
       <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="text-center">
+          <a href="<%=podcast_path(p)%>"><img class="center-block img-responsive" src=<%=p.url%> width="50" height="50"></a>
+        </div>
         <%= link_to p.name, p %>
         <span class="badge badge-primary badge-pill"><%= p.subscriptions.count %></span>
       </li>

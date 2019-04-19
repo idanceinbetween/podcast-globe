@@ -22,12 +22,17 @@
     <div class="card">
       <div class="card-body">
         <h5 class="card-title"><%= link_to p.name, p %></h5>
-        <p class="card-text"><%= (p.description.length>100) ? p.description.first(80) + "..." : p.description %></p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Categories: <% p.categories.each do |c| %><%= link_to c.name, "/podcasts?category=#{c.id}" %> | <% end %></small>
-      </div>
+
+        <div class="card-text text-center">
+          <img src=<%=p.url%> width="150" height="150"><br><%= (p.description.length>100) ? p.description.first(80) + "..." : p.description %>
+        </div>
+
+        <div class="card-footer">
+          <small class="text-muted">Categories: <% p.categories.each do |c| %><%= link_to c.name, "/podcasts?category=#{c.id}" %> | <% end %></small>
+        </div>
+
     </div>
+   </div>
    </div>
    <% end %>
 <p>&nbsp;</p>
