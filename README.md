@@ -7,7 +7,7 @@ A web app to discover podcasts.
 
 ## How to install:
 - Fork and download the repo.
-- Within the folder: `rails db:create db:migrate db:seed` and then `rails s`.
+- Within the folder: `rails db:create db:migrate db:seed` and then `rails s` in Command Line Interface.
 - Open `localhost:3000` on your browser.
 
 ## Author and acknowledgment
