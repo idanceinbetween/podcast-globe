@@ -1,25 +1,14 @@
-# README
+# Cast Away
+A web app to discover podcasts.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description
+- Built on Ruby on Rails with MVC pattern
+- Designed features that utilised 11 models on the backend
 
-Things you may want to cover:
+## How to install:
+- Fork and download the repo.
+- Within the folder: `rails db:create db:migrate db:seed` and then `rails s`.
+- Open `localhost:3000` on your browser.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# podcast-globe
+## Author and acknowledgment
+This app was built specifically as a project for Module 2 at Flatiron School within 4 days, together with Diogo Costa. We acknowledge the help of our Technical Coaches especially Steven and Guy.
