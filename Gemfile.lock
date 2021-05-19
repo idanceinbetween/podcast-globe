@@ -5,6 +5,11 @@ GIT
   specs:
     faker (1.9.3)
       i18n (>= 0.7)
+      pastel (~> 0.7.2)
+      thor (~> 0.20.0)
+      tty-pager (~> 0.12.0)
+      tty-screen (~> 0.6.5)
+      tty-tree (~> 0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -91,6 +96,7 @@ GEM
     crass (1.0.5)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    equatable (0.7.0)
     erubi (1.8.0)
     execjs (2.7.0)
     ffi (1.10.0)
@@ -126,7 +132,9 @@ GEM
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2019.0331)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
@@ -136,9 +144,13 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
+    pastel (0.7.4)
+      equatable (~> 0.6)
+      tty-color (~> 0.5)
     popper_js (1.14.5)
     public_suffix (3.0.3)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -213,9 +225,22 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.0)
+    strings (0.1.8)
+      strings-ansi (~> 0.1)
+      unicode-display_width (~> 1.5)
+      unicode_utils (~> 1.4)
+    strings-ansi (0.2.0)
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
+    tty-color (0.6.0)
+    tty-pager (0.12.1)
+      strings (~> 0.1.4)
+      tty-screen (~> 0.6)
+      tty-which (~> 0.4)
+    tty-screen (0.6.5)
+    tty-tree (0.2.0)
+    tty-which (0.4.2)
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -226,6 +251,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    unicode-display_width (1.7.0)
+    unicode_utils (1.4.0)
     unirest (1.0.8)
       addressable
       json
@@ -257,7 +284,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.3)
   rest-client
   sass-rails (~> 5.0)
